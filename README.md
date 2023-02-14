@@ -38,8 +38,8 @@ $usdCurrencyRate = $cbrf->getCurrencyRateByCharCode('USD');
 
 echo sprintf(
     '1 %s = %s RUB',
-    $currencyRate->getCharCode(),
-    $currencyRate->getRate(),
+    $usdCurrencyRate->getCharCode(),
+    $usdCurrencyRate->getRate(),
 );
 
 ```
