@@ -1,0 +1,21 @@
+{
+    "name": "imitronov/cbrf-currency-rate",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Imitronov\\CbrfCurrencyRate\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ivan Mitronov",
+            "email": "imitronov@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "ext-bcmath": "*",
+        "ext-simplexml": "*",
+        "symfony/http-client": "^6.2"
+    }
+}
