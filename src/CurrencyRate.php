@@ -6,15 +6,36 @@ namespace Imitronov\CbrfCurrencyRate;
 
 class CurrencyRate
 {
+    private $rate;
+
+    private $value;
+
+    private $name;
+
+    private $nominal;
+
+    private $charCode;
+
+    private $numCode;
+
+    private $id;
+
     public function __construct(
-        private string $id,
-        private int $numCode,
-        private string $charCode,
-        private int $nominal,
-        private string $name,
-        private float $value,
-        private string $rate,
+        string $id,
+        int $numCode,
+        string $charCode,
+        int $nominal,
+        string $name,
+        float $value,
+        string $rate
     ) {
+        $this->id = $id;
+        $this->numCode = $numCode;
+        $this->charCode = $charCode;
+        $this->nominal = $nominal;
+        $this->name = $name;
+        $this->value = $value;
+        $this->rate = $rate;
     }
 
     /**

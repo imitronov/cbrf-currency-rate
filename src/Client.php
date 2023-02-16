@@ -14,7 +14,10 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class Client
 {
-    private HttpClientInterface $httpClient;
+    /**
+     * @var HttpClientInterface
+     */
+    private $httpClient;
 
     public function __construct()
     {
@@ -29,13 +32,13 @@ class Client
         try {
             $request = $this->httpClient->request(
                 'GET',
-                'https://cbr.ru/scripts/XML_daily.asp',
+                'https://cbr.ru/scripts/XML_daily.asp'
             );
         } catch (TransportExceptionInterface $exception) {
             throw new CbrfException(
                 'Failed to connect to the CB RF.',
                 100,
-                $exception,
+                $exception
             );
         }
 
@@ -46,11 +49,11 @@ class Client
             | RedirectionExceptionInterface
             | ServerExceptionInterface
             | TransportExceptionInterface $exception
-            ) {
+        ) {
             throw new CbrfException(
                 'Failed to receive a response from the CB RF.',
                 110,
-                $exception,
+                $exception
             );
         }
 
@@ -70,7 +73,7 @@ class Client
             throw new CbrfException(
                 'Failed to parse response from CB RF.',
                 200,
-                $exception,
+                $exception
             );
         }
 
@@ -82,7 +85,7 @@ class Client
             $rate = bcdiv(
                 str_replace(',', '.', $value),
                 sprintf('%s', $nominal),
-                intval(log($nominal * 10000, 10)),
+                intval(log($nominal * 10000, 10))
             );
 
             yield new CurrencyRate(
@@ -92,7 +95,7 @@ class Client
                 $nominal,
                 sprintf('%s', $xmlCurrencyRate->Name),
                 floatval($value),
-                $rate,
+                $rate
             );
         }
     }
